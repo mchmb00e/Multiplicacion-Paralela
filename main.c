@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
     B = calloc(size_B, sizeof(int));
     for (int i = 0; i < size_B; i++) {
         scanf("%d", &B[i]);
-        printf("%d", B[i]);
+        printf("%d", B[i]); 
     }
     printf("\n");
 
@@ -65,17 +65,18 @@ int main(int argc, char *argv[]) {
     if (k == 1) {
         printf("\n\nImplementación secuencial.\n\n");
         if (method == TRADITIONAL_METHOD) {
-            int pivot, sum = 0, *C;
-            C = calloc(size_B, sizeof(int));
+            int pivot;
+            unsigned long long sum = 0, *C;
+            C = calloc(size_B, sizeof(unsigned long long));
             pivot = array_to_int(size_A, A);
             for (int i = 0; i < size_B; i++) {
                 C[i] = B[i] * pivot;
             }
             for (int i = 0; i < size_B; i++) {
-                printf("sum = sum + %d * 10^%d\n", C[i], size_B-(i+1));
+                printf("sum = sum + %lld * 10^%d\n", C[i], size_B-(i+1));
                 sum = sum + C[i] * pow(10, size_B-(i+1));
             }
-            printf("Resultado: %d\n", sum);
+            printf("Resultado: %lld\n", sum);
         } else if (method == RUSSIAN_METHOD) {
 
         }
