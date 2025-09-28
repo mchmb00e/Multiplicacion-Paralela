@@ -51,8 +51,8 @@ print(f"Resultado esperado: {num1 * num2}")
 print('-' * 10)
 
 os.system("gcc main.c -o temp")
-os.system(f"./temp {k} < temp.txt")
+os.system(f"./temp {k} -T -V < temp.txt")
 
 print('-' * 10)
 
-os.system("remove temp.txt main")
+os.system('rm temp temp.txt')
