@@ -37,6 +37,8 @@ def generate(file_name, m, n):
 m = int(sys.argv[1])
 n = int(sys.argv[2])
 k = int(sys.argv[3])
+M = str(sys.argv[4])
+O = str(sys.argv[5])
 
 num1, num2 = generate(file_name="temp.txt", m = m, n = n)
 num1 = int("".join(map(str, num1)))
@@ -51,7 +53,7 @@ print(f"Resultado esperado: {num1 * num2}")
 print('-' * 10)
 
 os.system("gcc main.c -o temp")
-os.system(f"./temp {k} -T -V < temp.txt")
+os.system(f"./temp {k} {M} {O} < temp.txt")
 
 print('-' * 10)
 
