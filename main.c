@@ -23,40 +23,6 @@ void file_content(FILE *f) {
     }
 }
 
-unsigned long long mul_tradicional_seq(int *A, int *B, int ta, int tb) {
-    unsigned long long *partial_sum;
-    unsigned long long total = 0;
-    unsigned long long partial_number = 0;
-
-    partial_sum = calloc(tb, sizeof(unsigned long long));
-
-    float E_cpu;
-    long E_wall;
-    time_t ts, te;
-    clock_t cs, ce;
-
-    ts = time(NULL);
-    cs = clock();
-
-    for (int i = 0; i < ta; i++) {
-        partial_number = partial_number * 10 + A[i];
-    }
-    for (int i = 0; i < tb; i++) {
-        partial_sum[i] = partial_number * B[i];
-        partial_sum[i] *= (unsigned long long) pow(10, tb - (i + 1));
-        total += partial_sum[i];
-    }
-
-    ce = clock();
-    te = time(NULL);
-    E_wall = (long) (te - ts);
-    E_cpu = (float)(ce - cs) / CLOCKS_PER_SEC;
-    printf("Elapsed CPU Time %f Wall Time %ld\n", E_cpu,E_wall);
-
-    free(partial_sum);
-    return total;
-}
-
 void *Usage(char *argv[]) {
     printf("Usage: %s k -M -O < data.txt\n", argv[0]);
     exit(1);
@@ -103,7 +69,7 @@ int main(int argc, char *argv[]) {
 
         if (k == 1) { // Forma secuencial
             if (method == TRADITIONAL_METHOD) {
-                res = mul_tradicional_seq(A, B, size_A, size_B);
+                res = mult_trad_seq(A, B, size_A, size_B);
                 if (mode == SILENCE_MODE) {
                     printf("Cantidad de digitos\n    Numero 1: %d\n    Numero 2: %d\n\n", size_A, size_B);
                 } else if (mode == VERBOSE_MODE) {
