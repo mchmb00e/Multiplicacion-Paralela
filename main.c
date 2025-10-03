@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#include "traditional.h"
 
 #define VERBOSE_MODE 'V'
 #define SILENCE_MODE 'S'
@@ -35,7 +36,6 @@ int main(int argc, char *argv[]) {
     int size_A, size_B, k;
     int *A, *B;
     char method, mode;
-    unsigned long long res;
 
     
     // Verificar parámetros
@@ -69,14 +69,13 @@ int main(int argc, char *argv[]) {
 
         if (k == 1) { // Forma secuencial
             if (method == TRADITIONAL_METHOD) {
-                res = mult_trad_seq(A, B, size_A, size_B);
-                if (mode == SILENCE_MODE) {
-                    printf("Cantidad de digitos\n    Numero 1: %d\n    Numero 2: %d\n\n", size_A, size_B);
-                } else if (mode == VERBOSE_MODE) {
-                    printf("Resultado: %llu\n", res);
-                }
+                
+                traditional_seq(A, B, size_A, size_B);
+
             } else if (method == RUSSIAN_METHOD) {
+
                 // Implementación rusa
+
             }
 
         } else { // Forma paralela
