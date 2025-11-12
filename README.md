@@ -6,3 +6,6 @@
 $m:\text{Cantidad de dígitos del primero número}$
 $n:\text{Cantidad de dígitos del segundo número}$
 $k:\text{Cantidad de hilos}$
+
+
+a
