@@ -52,7 +52,7 @@ print("Numero 2:", num2)
 print(f"Resultado esperado: {num1 * num2}")
 print('-' * 10)
 
-os.system("gcc main.c traditional.c -o temp -lm")
+os.system("gcc main.c tradicional/tradicional.c -o temp -lm")
 os.system(f"./temp {k} {M} {O} < temp.txt")
 
 print('-' * 10)
